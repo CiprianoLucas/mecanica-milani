@@ -1,0 +1,17 @@
+{
+  "name": "mecanica-joao",
+  "displayName": "Mecânica João Silva",
+  "logo": "logo-joao.png",
+  "phone": "(47) 4444-4444",
+  "whatsapp": "5547444444444",
+  "street": "Rua João Silva 456",
+  "neighborhood": "Vila Nova",
+  "city": "Blumenau",
+  "state": "SC",
+  "fullAddress": "Vila Nova, Blumenau-SC",
+  "description": "Mecânica familiar com tradição",
+  "speciality": "Especialista em Veículos Nacionais e Importados",
+  "weekdays": "7h às 19h",
+  "saturday": "8h às 14h",
+  "googleMapsUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d889.2435009016615!2d-49.129733730379684!3d-26.936038602927397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1spt-BR!2sbr!4v1755877994071!5m2!1spt-BR!2sbr"
+}

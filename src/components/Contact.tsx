@@ -8,10 +8,13 @@ import {
   Car,
   Wrench
 } from "lucide-react";
+import { useCompany } from "@/contexts/CompanyContext";
 
 const Contact = () => {
+  const { config } = useCompany();
+
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5547991727035", "_blank");
+    window.open(`https://wa.me/${config.whatsapp}`, "_blank");
   };
 
   return (
@@ -48,7 +51,7 @@ const Contact = () => {
               </Button>
 
               <p className="text-white/80 text-lg">
-                📱 <strong>(47) 99172-7035</strong>
+                📱 <strong>{config.phone}</strong>
               </p>
             </div>
 
@@ -57,8 +60,8 @@ const Contact = () => {
                 <MapPin className="w-8 h-8 text-accent mb-4" />
                 <h4 className="font-semibold text-lg mb-2">Localização</h4>
                 <p className="text-white/80">
-                  Ao lado do Terminal da Velha<br />
-                  Blumenau - SC
+                  {config.neighborhood}<br />
+                  {config.city} - {config.state}
                 </p>
               </div>
 
@@ -66,8 +69,8 @@ const Contact = () => {
                 <Clock className="w-8 h-8 text-accent mb-4" />
                 <h4 className="font-semibold text-lg mb-2">Horários</h4>
                 <p className="text-white/80">
-                  Seg-Sex: 8h às 18h<br />
-                  Sáb: 8h às 12h
+                  Seg-Sex: {config.weekdays}<br />
+                  Sáb: {config.saturday}
                 </p>
               </div>
             </div>
@@ -129,7 +132,7 @@ const Contact = () => {
               Seu carro em boas mãos!
             </h3>
             <p className="text-xl text-white/90 mb-6">
-              Na Mecânica Milani, cuidamos do seu veículo com a atenção e qualidade que ele merece.
+              Na {config.displayName}, cuidamos do seu veículo com a atenção e qualidade que ele merece.
             </p>
             <Button 
               variant="accent" 
@@ -138,7 +141,7 @@ const Contact = () => {
               className="text-xl px-10 py-6"
             >
               <Phone className="w-6 h-6" />
-              (47) 99172-7035
+              {config.phone}
             </Button>
           </div>
         </div>

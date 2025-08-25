@@ -1,12 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
+import { useCompany } from "@/contexts/CompanyContext";
 
 const Testimonials = () => {
+  const { config } = useCompany();
+
   const testimonials = [
     {
       name: "João Silva",
       rating: 5,
-      comment: "Excelente atendimento! O pessoal da Mecânica Milani explicou tudo de forma simples e clara. Meu carro ficou como novo!",
+      comment: `Excelente atendimento! O pessoal da ${config.displayName} explicou tudo de forma simples e clara. Meu carro ficou como novo!`,
       service: "Revisão completa"
     },
     {
@@ -24,7 +27,7 @@ const Testimonials = () => {
     {
       name: "Ana Costa",
       rating: 5,
-      comment: "Finalmente encontrei uma mecânica de confiança em Blumenau. Atendimento excelente e preços honestos!",
+      comment: `Finalmente encontrei uma mecânica de confiança em ${config.address.city}. Atendimento excelente e preços honestos!`,
       service: "Sistema de freios"
     }
   ];
@@ -89,7 +92,7 @@ const Testimonials = () => {
               Mais de 500 clientes satisfeitos
             </h3>
             <p className="text-white/90">
-              Junte-se aos nossos clientes que confiam na Mecânica Milani para cuidar dos seus veículos.
+              Junte-se aos nossos clientes que confiam na {config.displayName} para cuidar dos seus veículos.
             </p>
           </div>
         </div>

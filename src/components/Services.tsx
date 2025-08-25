@@ -9,6 +9,7 @@ import {
   Gauge,
   Phone
 } from "lucide-react";
+import { useCompany } from "@/contexts/CompanyContext";
 import engineService from "@/assets/motor.png";
 import brakeService from "@/assets/freio.png";
 import electricalService from "@/assets/eletrica.png";
@@ -17,8 +18,10 @@ import acService from "@/assets/ac.png";
 import maintenanceService from "@/assets/vistoria.png";
 
 const Services = () => {
+  const { config } = useCompany();
+
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5547991727035", "_blank");
+    window.open(`https://wa.me/${config.whatsapp}`, "_blank");
   };
 
   const services = [

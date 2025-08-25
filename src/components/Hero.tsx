@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin, Star } from "lucide-react";
+import { useCompany } from "@/contexts/CompanyContext";
 import heroImage from "@/assets/hero-mecainca.jpg";
 
 const Hero = () => {
+  const { config } = useCompany();
+
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5547991727035", "_blank");
+    window.open(`https://wa.me/${config.whatsapp}`, "_blank");
   };
 
   return (
@@ -13,7 +16,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src={heroImage} 
-          alt="Mecânica Milani - Oficina profissional"
+          alt={`${config.displayName} - Oficina profissional`}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/60"></div>
@@ -33,17 +36,17 @@ const Hero = () => {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Mecânica
-              <span className="block text-accent">Milani</span>
+              {config.displayName.split(' ')[0]}
+              <span className="block text-accent">{config.displayName.split(' ').slice(1).join(' ')}</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 mb-4 font-medium">
-              Especialista em Veículos Nacionais e Importados
+              {config.speciality}
             </p>
 
             <div className="flex items-center space-x-2 mb-8 text-white/80">
               <MapPin className="w-5 h-5 text-accent" />
-              <span className="text-lg">Localizada ao lado do Terminal da Velha, Blumenau-SC</span>
+              <span className="text-lg">{config.address.fullAddress}</span>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">

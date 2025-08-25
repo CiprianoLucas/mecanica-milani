@@ -8,6 +8,13 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    proxy: {
+      '/api/companies': {
+        target: 'https://mecanica-milani.capiblu.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/companies/, '/companies')
+      }
+    }
   },
   plugins: [
     react(),

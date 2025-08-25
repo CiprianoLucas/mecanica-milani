@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Phone, MapPin } from "lucide-react";
 import { useState } from "react";
+import { useCompany } from "@/contexts/CompanyContext";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { config } = useCompany();
 
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5547991727035", "_blank");
+    window.open(`https://wa.me/${config.whatsapp}`, "_blank");
   };
 
   return (
@@ -19,13 +21,13 @@ const Header = () => {
             <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-white rounded flex items-center justify-center overflow-hidden">
               <img
                 src={logo}
-                alt="Logo Mecânica Milani"
+                alt={`Logo ${config.displayName}`}
                 className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">Mecânica Milani</h1>
-              <p className="text-sm text-muted-foreground">Especialista em Nacionais e Importados</p>
+              <h1 className="text-xl font-bold text-foreground">{config.displayName}</h1>
+              <p className="text-sm text-muted-foreground">{config.description}</p>
             </div>
           </div>
 
@@ -49,7 +51,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
               <MapPin className="w-4 h-4" />
-              <span>Velha central (Ao lado do Terminal da Velha), Blumenau-SC</span>
+              <span>{config.address.fullAddress}</span>
             </div>
             <Button variant="whatsapp" size="sm" onClick={handleWhatsAppContact}>
               <Phone className="w-4 h-4" />

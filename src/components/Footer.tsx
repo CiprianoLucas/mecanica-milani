@@ -1,8 +1,11 @@
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useCompany } from "@/contexts/CompanyContext";
 
 const Footer = () => {
+  const { config } = useCompany();
+
   const handleWhatsAppContact = () => {
-    window.open("https://wa.me/5547991727035", "_blank");
+    window.open(`https://wa.me/${config.whatsapp}`, "_blank");
   };
 
   return (
@@ -14,12 +17,12 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
               <div className="bg-gradient-hero p-2 rounded-lg">
                 <div className="w-8 h-8 bg-white rounded flex items-center justify-center">
-                  <span className="text-primary font-bold text-lg">M</span>
+                  <span className="text-primary font-bold text-lg">{config.displayName.charAt(0)}</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-bold">Mecânica Milani</h3>
-                <p className="text-white/70 text-sm">Especialista em Nacionais e Importados</p>
+                <h3 className="text-xl font-bold">{config.displayName}</h3>
+                <p className="text-white/70 text-sm">{config.description}</p>
               </div>
             </div>
             <p className="text-white/80 leading-relaxed">
@@ -38,21 +41,21 @@ const Footer = () => {
                   onClick={handleWhatsAppContact}
                   className="text-white/80 hover:text-white transition-smooth"
                 >
-                  (47) 99172-7035
+                  {config.phone}
                 </button>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-accent mt-1" />
                 <div className="text-white/80">
-                  <p>Rua Teresa Marta Mathes 35</p>
-                  <p>Velha - Blumenau - SC</p>
+                  <p>{config.street}</p>
+                  <p>{config.neighborhood} - {config.city} - {config.state}</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-accent mt-1" />
                 <div className="text-white/80">
-                  <p>Segunda a Sexta: 8h às 18h</p>
-                  <p>Finais de semana: Fechado</p>
+                  <p>Segunda a Sexta: {config.weekdays}</p>
+                  <p>Finais de semana: {config.saturday}</p>
                 </div>
               </div>
             </div>
@@ -74,7 +77,7 @@ const Footer = () => {
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center">
           <p className="text-white/60">
-            © 2025 Mecânica Milani. Todos os direitos reservados.
+            © 2025 {config.displayName}. Todos os direitos reservados.
           </p>
         </div>
       </div>
